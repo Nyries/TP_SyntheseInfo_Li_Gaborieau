@@ -1,3 +1,2 @@
-void readCommand();
-void executeCommand(char *command);
+void Question2();
 

@@ -1,0 +1,2 @@
+void exitFunction();
+void dateFunction();

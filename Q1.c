@@ -3,11 +3,16 @@
 #include <string.h>
 #include <unistd.h>
 
-void DisplayShell(){
-    char *WelcomeMessage = " Welcome to Ensea Shell \nWrite 'exit' if you want to quit!\n";
-    char *prompt= "enseash %";
-    write(STDOUT_FILENO,"./enseash\n",strlen("./enseash\n"));
+#define linestart "ensea % "
+#define WelcomeMessage \
+" \nWelcome to Ensea Shell \nWrite 'exit' if you want to quit!\n"
+
+void welcome(){
+
+    write(STDOUT_FILENO,linestart,sizeof(linestart));
     write(STDOUT_FILENO, WelcomeMessage,strlen(WelcomeMessage));
-    write(STDOUT_FILENO, prompt, strlen(prompt));
 }
 
+void prompt(){
+    write(STDOUT_FILENO, linestart, strlen(linestart));
+}

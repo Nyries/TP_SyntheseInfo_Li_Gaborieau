@@ -1,3 +1,2 @@
-void DisplayShell();
-
-
+void welcome();
+void prompt();

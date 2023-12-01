@@ -2,29 +2,29 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <wait.h>
+#include "Q1.h"
 
+#define charBuf_size 256
 
-void executeCommand(char *command){
-    pid_t pid;
-    int status;
-    pid = fork();
-    if(pid==-1){
-        perror("Fork impossible\n");
+void Question2() {
+    char command[charBuf_size];
+    welcome();
+
+    while (1) {
+        prompt();
+
+        read(STDIN_FILENO, command, sizeof(command));
+        command[strcspn(command, "\n")] = '\0';
+
+        pid_t pid = fork();
+        if (pid == -1) {
+            perror("Fork impossible\n");
+        }
+        if (pid == 0) {
+            execlp(command, command, NULL);
+        } else {
+            waitpid(pid, NULL, 0);
+        }
     }
-    if(pid==0){
-        execlp(command,command,NULL);
-    }
-    else{
-        wait(&status);
-    }
-}
-void readCommand() {
-    char command[256];
-    int number;
-
-    number = read(STDOUT_FILENO, command, 256);
-
-    command[number - 1] = '\0';
-    executeCommand(command);
-    write(STDOUT_FILENO, "enseash %", strlen("enseash %"));
 }
