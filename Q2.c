@@ -3,11 +3,6 @@
 #include <string.h>
 #include <unistd.h>
 
-//Exit Function
-void exitFunction(){
-    write(STDOUT_FILENO,"\t Bye bye \n\n",strlen("\t Bye bye \n\n"));
-    exit(EXIT_SUCCESS);
-}
 
 void executeCommand(char *command){
     pid_t pid;
@@ -22,4 +17,14 @@ void executeCommand(char *command){
     else{
         wait(&status);
     }
+}
+void readCommand() {
+    char command[256];
+    int number;
+
+    number = read(STDOUT_FILENO, command, 256);
+
+    command[number - 1] = '\0';
+    executeCommand(command);
+    write(STDOUT_FILENO, "enseash %", strlen("enseash %"));
 }
