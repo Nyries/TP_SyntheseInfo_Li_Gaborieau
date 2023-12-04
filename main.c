@@ -8,7 +8,8 @@
 //#include "Q3.h"
 //#include "Q4.h"
 //#include "Q5.h"
-#include "Q6.h"
+//#include "Q6.h"
+#include "Q7.h"
 
 void main(){
 
@@ -24,5 +25,7 @@ void main(){
     //Code for question 5
     //mainQuestion5();
     // Code for question 6
-    mainQuestion6();
+    //mainQuestion6();
+    // Code for question 7
+    mainQuestion7();
 }
