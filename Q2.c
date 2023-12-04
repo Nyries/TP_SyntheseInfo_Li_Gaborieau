@@ -12,20 +12,20 @@ void mainQuestion2() {
     welcome();
 
     while (1) {
-        prompt();
+        prompt();  // Display prompt and wait for user input
 
         read(STDIN_FILENO, command, sizeof(command));
-        command[strcspn(command, "\n")] = '\0';
+        command[strcspn(command, "\n")] = '\0'; // Remove the newline character from the user input
 
         pid_t pid = fork();
-        if (pid == -1) {
+        if (pid == -1) { //perror
             perror("Fork impossible\n");
         }
-        if (pid == 0) {
+        if (pid == 0) { //child
 
             execlp(command, command, NULL);
 
-        } else {
+        } else { //father
             waitpid(pid, NULL, 0);
         }
     }
