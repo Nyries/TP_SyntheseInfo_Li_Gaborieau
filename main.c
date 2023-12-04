@@ -5,9 +5,9 @@
 #include <unistd.h>
 /*#include "Q1.h"
 #include "Q2.h"
-#include "Q3.h"
-*/
-#include "Q4.h"
+#include "Q3.h"*/
+//#include "Q4.h"*/
+#include "Q5.h"
 
 void main(){
 
@@ -18,6 +18,8 @@ void main(){
     mainQuestion2();*/
     /* Code for question 3
     mainQuestion3();*/
-    /* Code for question 4*/
-    mainQuestion4();
+    /* Code for question 4
+    mainQuestion4();*/
+    //Code for question 5
+    mainQuestion5();
 }
