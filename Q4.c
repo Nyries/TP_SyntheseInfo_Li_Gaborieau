@@ -6,10 +6,10 @@
 #include "Q3.h"
 #include "Q1.h"
 
-char linestart[256]= "enseash %";
+char linestart[256]= "enseash % ";
 
 
-void executeCommand(char* command){
+void executeCommand4(char* command){
     pid_t pid;
     pid =fork();
     int status;
@@ -21,14 +21,13 @@ void executeCommand(char* command){
         exit(EXIT_SUCCESS);
     }
     else{
-        wait(&status);
-        if(WIFEXITED(status)){
-            sprintf(linestart,"enseash [exit:9] %d ", WEXITSTATUS(status));
+        while ((pid=wait(&status))!=-1){
+            if (WIFEXITED(status)) {
+                sprintf( linestart,"enseash [exit:%d] %% ", WEXITSTATUS(status));
+            } else if (WIFSIGNALED(status)) {
+                sprintf(linestart,"enseash [sign:%d] %% ", WTERMSIG(status));
+            }
         }
-        else if(WIFSIGNALED(status)){
-            sprintf(linestart,"enseash [sign:0] %d ", WTERMSIG(status));
-        }
-        write(STDOUT_FILENO,linestart, sizeof(linestart));
     }
 }
 int mainQuestion4(){
@@ -37,7 +36,7 @@ int mainQuestion4(){
     int number;
 
     while(1){
-        prompt();
+        write(STDOUT_FILENO,linestart, strlen(linestart));
         number=read(STDOUT_FILENO,command,sizeof(command));
         if (number!=0){
             command[number-1]= '\0';
@@ -45,7 +44,7 @@ int mainQuestion4(){
         if (strcmp(command,"exit")==0 ||number==0){
             exitFunction();
         }
-        executeCommand(command);
+        executeCommand4(command);
     }
     exit(EXIT_SUCCESS);
 }
