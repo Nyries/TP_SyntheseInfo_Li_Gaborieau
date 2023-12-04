@@ -11,7 +11,7 @@
 char linestart7[256]= "enseash % ";
 
 
-void executeCommand7(char** command){
+void executeCommand7(char** command){ // Function to execute a command with redirections and measure execution time
 
     struct timespec time_start, time_stop;
     pid_t pid=fork();
@@ -20,7 +20,7 @@ void executeCommand7(char** command){
     int chevrons,in=0,out=0,status;
     clock_gettime(CLOCK_REALTIME, &time_start);
 
-    while (*tok!=NULL) {
+    while (*tok!=NULL) {  // Loop through the command to check for '<' or '>'
         if (strcmp(*tok, "<") == 0) {
             chevrons = 1;
             in = 1;
@@ -41,13 +41,13 @@ void executeCommand7(char** command){
         perror("Fork impossible\n");
     }
     else if (pid==0){
-        if (in) {
+        if (in) {  // Redirect stdin if '<' is present
             int fd0=open(filename,O_RDONLY);
             dup2(fd0,STDIN_FILENO);
             close(fd0);
             in=0;
         }
-        if (out){
+        if (out){  // Redirect stdout if '>' is present
             int fd1 = creat(filename, S_IROTH|S_IRGRP|S_IRUSR);
             dup2(fd1, STDOUT_FILENO);
             close(fd1);
