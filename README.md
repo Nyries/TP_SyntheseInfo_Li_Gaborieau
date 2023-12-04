@@ -24,14 +24,15 @@ To achieve these objectives, we implemented a command execution loop in the Ense
 This loop is prompting users for commands, reading the input, and executing the entered commands using a child process created with the `fork` system call. 
 
 
-Question 3) Management of the shell output with the command ”exit” or with <ctrl>+d : 
+Question 3 : Management of the shell output with the command ”exit” or with <ctrl>+d : 
+
+To archive these objectives, we start with the code from question 2 and add we add the "exitFunction" to exit proprely with a byebye message. 
 
 
+Question 4 : Display the return code (or signal) of the previous command in the prompt :
 
-
-
-
-
+After executing a command, the father process waits for the child process to finish, ans checks whether the child process exited normally or was terminated by a signal. 
+Depending on the outcome, the global variable linestart4 is updated to include the corresponding information.
 
 
 
