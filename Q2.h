@@ -1,2 +1,2 @@
-void Question2();
+void mainQuestion2();
 

@@ -7,7 +7,7 @@
 
 #define charBuf_size 256
 
-void Question2() {
+void mainQuestion2() {
     char command[charBuf_size];
     welcome();
 
@@ -22,7 +22,9 @@ void Question2() {
             perror("Fork impossible\n");
         }
         if (pid == 0) {
+
             execlp(command, command, NULL);
+
         } else {
             waitpid(pid, NULL, 0);
         }

@@ -1,2 +1,2 @@
+//int mainQuestion3();
 void exitFunction();
-void dateFunction();

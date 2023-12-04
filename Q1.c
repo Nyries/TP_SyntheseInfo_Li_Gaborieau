@@ -3,9 +3,8 @@
 #include <string.h>
 #include <unistd.h>
 
-#define linestart "ensea % "
-#define WelcomeMessage \
-" \nWelcome to Ensea Shell \nWrite 'exit' if you want to quit!\n"
+#define linestart "enseash % "
+#define WelcomeMessage " \nWelcome to Ensea Shell \nWrite 'exit' if you want to quit!\n"
 
 void welcome(){
 
