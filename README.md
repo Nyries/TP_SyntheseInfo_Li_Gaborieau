@@ -43,6 +43,9 @@ We then calculate and incorporate it into the global variable linestart5.
 
 Question 6 : Execution of a complex command (with arguments) : 
 
+By utilizing the execvp system call, the child process executes the command with the provided arguments. 
+The main loop (mainQuestion6) now parses user input to separate the command and its arguments, ensuring proper execution. 
+
 
 
 
