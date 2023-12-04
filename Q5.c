@@ -26,7 +26,7 @@ void executeCommand5(char* command){   // Function to execute a given command an
     else{ //parent
         while ((pid=wait(&status))!=-1){
             clock_gettime(CLOCK_REALTIME, &time_stop);   // Get the stop time after the command execution
-            unsigned long long int duration = time_stop.tv_nsec-time_start.tv_nsec;  // Calculate the duration
+            unsigned long long int duration = time_stop.tv_nsec-time_start.tv_nsec;    // Calculate the duration
             if (WIFEXITED(status)) {
                 sprintf( linestart5,"enseash [exit:%d|%lldms] %% ", WEXITSTATUS(status),duration/1000000);
             } else if (WIFSIGNALED(status)) {
@@ -48,8 +48,7 @@ int mainQuestion5(){
         if (strcmp(command, "exit") == 0 || number == 0) {
             exitFunction();
         }
-        executeCommand5(command);
-        // Execute the entered command, measure the execution time, and display the information in the prompt
+        executeCommand5(command);  // Execute the entered command, measure the execution time, and display the information in the prompt
     }
     if (number ==-1){
         perror("read");

@@ -11,7 +11,7 @@
 char linestart6[256]= "enseash % ";
 
 
-void executeCommand6(char** command){
+void executeCommand6(char** command){  //Function to execute a complex command with arguments and measure execution time
 
     struct timespec time_start, time_stop;
     pid_t pid=fork();
@@ -47,8 +47,8 @@ int mainQuestion6(){
         if (number != 0) {
             command[number - 1] = '\0';
         }
-        argv[0] = strtok(command, " "); //helps us to detect spaces, so we can detect arguments in commands.
-        while((argv[i] = strtok(NULL, " "))!=NULL) {//We could also try to detect '-' to find arguments.
+        argv[0] = strtok(command, " ");     // helps us to detect spaces, so we can detect arguments in commands.
+        while((argv[i] = strtok(NULL, " "))!=NULL) {   // We could also try to detect '-' to find arguments.
             i++;
         }
         if (strcmp(command, "exit") == 0 || number == 0) {
