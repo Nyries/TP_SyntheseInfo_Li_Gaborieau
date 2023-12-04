@@ -35,7 +35,16 @@ After executing a command, the father process waits for the child process to fin
 Depending on the outcome, the global variable linestart4 is updated to include the corresponding information.
 
 
+Question 5 : Measurement of the command execution time using the call clock_gettime :
 
+To measur the execution time of commands, we used the "clock_gettime" function to captured the start and stop times around the execution of each command. 
+We then calculate and incorporate it into the global variable linestart5. 
+
+
+Question 6 : Execution of a complex command (with arguments) : 
+
+By utilizing the execvp system call, the child process executes the command with the arguments. 
+The main loop now parses user input to separate the command and its arguments, ensuring proper execution. 
 
 
 
