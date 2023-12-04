@@ -23,13 +23,13 @@ void executeCommand7(char** command){
     while (*tok!=NULL) {
         if (strcmp(*tok, "<") == 0) {
             chevrons = 1;
-            *tok = NULL;
             in = 1;
+            *tok = NULL;
         }
         if (strcmp(*tok, ">") == 0) {
+            chevrons = 1;
             out = 1;
             *tok = NULL;
-            chevrons = 1;
         }
         tok++;
         if (chevrons == 1) {
