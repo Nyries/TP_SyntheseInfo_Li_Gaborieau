@@ -2,7 +2,7 @@
 
 Objectives : Develop a tiny shell, that displays exit codes and execution times of launched programs.
 
-## Question 1 : 
+## Question 1 : Display a welcome message, followed by a simple prompt: 
 Display a welcome message, followed by a simple prompt: 
 
 To achieve this objective, we will use 2 functions : "welcome" and "prompt". 
